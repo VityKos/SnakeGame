@@ -38,7 +38,7 @@ function drawGame() {
 
     changeSnakePosition();
     let result = isGameOver();
-    if (result) {
+    if (result) { 
         return;
     }
 
@@ -87,6 +87,7 @@ function isGameOver() {
     }
 
     if (gameOver) {
+        overSound.play();
         ctx.fillStyle = "white";
         ctx.font = "50px Verdana";
 
@@ -100,9 +101,9 @@ function isGameOver() {
             gradient.addColorStop("1.0", "red");
             ctx.fillStyle = gradient;
         }
-
-        ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);
-        overSound.play();
+    
+        ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 2);   
+        drawRestartPosib()     
     }
    
 
@@ -114,7 +115,11 @@ function drawScore() {
     ctx.font = "10px Verdana";
     ctx.fillText("Score " + score, canvas.width - 50, 10);
 }
-
+function drawRestartPosib() {
+    ctx.fillStyle = "white";
+    ctx.font = "10px Verdana";
+    ctx.fillText("Press Command + 'R' to restart the game!", canvas.width / 3.8, canvas.height/ 1.2);
+}
 function clearScreen() {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
